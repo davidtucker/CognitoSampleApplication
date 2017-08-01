@@ -37,6 +37,10 @@ class AppViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadUserValues()
+    }
+    
+    func loadUserValues () {
         self.resetAttributeValues()
         self.fetchUserAttributes()
     }
@@ -68,7 +72,7 @@ class AppViewController: UITableViewController {
     func setAttributeValues() {
         self.lastNameLabel.text = valueForAttribute(name: "family_name")
         self.firstNameLabel.text = valueForAttribute(name: "given_name")
-        self.usernameLabel.text = self.user?.username
+        self.usernameLabel.text = valueForAttribute(name: "email")
     }
     
     func valueForAttribute(name:String) -> String? {

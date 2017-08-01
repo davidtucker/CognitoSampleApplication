@@ -41,10 +41,12 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginPressed(_ sender: AnyObject) {
-        if (self.usernameInput?.text != nil && self.passwordInput?.text != nil) {
-            let authDetails = AWSCognitoIdentityPasswordAuthenticationDetails(username: self.usernameInput!.text!, password: self.passwordInput!.text! )
-            self.passwordAuthenticationCompletion?.set(result: authDetails)
+        if (self.usernameInput?.text == nil || self.passwordInput?.text == nil) {
+            return
         }
+        
+        let authDetails = AWSCognitoIdentityPasswordAuthenticationDetails(username: self.usernameInput!.text!, password: self.passwordInput!.text! )
+        self.passwordAuthenticationCompletion?.set(result: authDetails)
     }
     
     func inputDidChange(_ sender:AnyObject) {
@@ -70,9 +72,10 @@ extension LoginViewController: AWSCognitoIdentityPasswordAuthentication {
     
     public func didCompleteStepWithError(_ error: Error?) {
         DispatchQueue.main.async {
-            if let error = error as NSError? {
-                let alertController = UIAlertController(title: error.userInfo["__type"] as? String,
-                                                        message: error.userInfo["message"] as? String,
+            if error != nil {
+                let nsError = error as! NSError
+                let alertController = UIAlertController(title: nsError.userInfo["__type"] as? String,
+                                                        message: nsError.userInfo["message"] as? String,
                                                         preferredStyle: .alert)
                 let retryAction = UIAlertAction(title: "Retry", style: .default, handler: nil)
                 alertController.addAction(retryAction)

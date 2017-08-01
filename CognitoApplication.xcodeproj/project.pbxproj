@@ -16,6 +16,8 @@
 		632D25391EB95CDE005A4E31 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632D25381EB95CDE005A4E31 /* AppViewController.swift */; };
 		6398A6701EC15413009C2D77 /* CognitoConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6398A66F1EC15413009C2D77 /* CognitoConfig.plist */; };
 		6398A6721EC1548D009C2D77 /* CognitoConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6398A6711EC1548D009C2D77 /* CognitoConfig.swift */; };
+		63A8F7D51F30E79B00AD21E0 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F7D41F30E79B00AD21E0 /* SignupViewController.swift */; };
+		63A8F7D71F30FAC800AD21E0 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F7D61F30FAC800AD21E0 /* VerificationViewController.swift */; };
 		6E3BB744AD21E1DD722F496E /* Pods_CognitoApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50439609D2FD5FDF1A0EA3E5 /* Pods_CognitoApplication.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		632D25381EB95CDE005A4E31 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		6398A66F1EC15413009C2D77 /* CognitoConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CognitoConfig.plist; sourceTree = "<group>"; };
 		6398A6711EC1548D009C2D77 /* CognitoConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CognitoConfig.swift; sourceTree = "<group>"; };
+		63A8F7D41F30E79B00AD21E0 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		63A8F7D61F30FAC800AD21E0 /* VerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		88B9FE351F2439551342AEC4 /* Pods-CognitoApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CognitoApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-CognitoApplication/Pods-CognitoApplication.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +82,7 @@
 		632D251F1EB81732005A4E31 /* CognitoApplication */ = {
 			isa = PBXGroup;
 			children = (
+				63A8F7D81F311C0400AD21E0 /* Extension */,
 				6398A66E1EC153F0009C2D77 /* Config */,
 				632D25331EB95CAB005A4E31 /* Views */,
 				632D25201EB81732005A4E31 /* AppDelegate.swift */,
@@ -95,6 +100,8 @@
 				632D25341EB95CBD005A4E31 /* LoginViewController.swift */,
 				632D25361EB95CCE005A4E31 /* ResetPasswordViewController.swift */,
 				632D25381EB95CDE005A4E31 /* AppViewController.swift */,
+				63A8F7D41F30E79B00AD21E0 /* SignupViewController.swift */,
+				63A8F7D61F30FAC800AD21E0 /* VerificationViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -106,6 +113,13 @@
 				6398A6711EC1548D009C2D77 /* CognitoConfig.swift */,
 			);
 			name = Config;
+			sourceTree = "<group>";
+		};
+		63A8F7D81F311C0400AD21E0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		F5247A24A42C70CE5B467572 /* Frameworks */ = {
@@ -241,10 +255,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63A8F7D51F30E79B00AD21E0 /* SignupViewController.swift in Sources */,
 				632D25371EB95CCE005A4E31 /* ResetPasswordViewController.swift in Sources */,
 				6398A6721EC1548D009C2D77 /* CognitoConfig.swift in Sources */,
 				632D25351EB95CBD005A4E31 /* LoginViewController.swift in Sources */,
 				632D25391EB95CDE005A4E31 /* AppViewController.swift in Sources */,
+				63A8F7D71F30FAC800AD21E0 /* VerificationViewController.swift in Sources */,
 				632D25211EB81732005A4E31 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
