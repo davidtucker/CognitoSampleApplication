@@ -70,13 +70,23 @@ class SignupViewController : UIViewController {
         userPool.signUp(UUID().uuidString, password: password.text!, userAttributes: [emailAttribute, firstNameAttribute, lastNameAttribute], validationData: nil)
         .continueWith { (response) -> Any? in
             if response.error != nil {
+                // Error in the Signup Process
                 let alert = UIAlertController(title: "Error", message: response.error?.localizedDescription, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
                 self.present(alert, animated: true, completion: nil)
             } else {
                 self.user = response.result!.user
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "VerifySegue", sender: self)
+                // Does user need confirmation?
+                if (response.result?.userConfirmed != AWSCognitoIdentityUserStatus.Confirmed.rawValue) {
+                    // User needs confirmation, so we need to proceed to the verify view controller
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "VerifySegue", sender: self)
+                    }
+                } else {
+                    // User signed up but does not need confirmation.  This should rarely happen (if ever).
+                    DispatchQueue.main.async {
+                        self.presentingViewController?.dismiss(animated: true, completion: nil)
+                    }
                 }
             }
             return nil

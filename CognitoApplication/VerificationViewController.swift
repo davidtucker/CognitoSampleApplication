@@ -59,6 +59,7 @@ class VerificationViewController: UIViewController {
                 self.resetConfirmation(message: response.error!.localizedDescription)
             } else {
                 DispatchQueue.main.async {
+                    // Return to Login View Controller - this should be handled a bit differently, but added in this manner for simplicity
                     self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
                 }
             }
