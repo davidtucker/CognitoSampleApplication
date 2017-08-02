@@ -77,7 +77,7 @@ class SignupViewController : UIViewController {
             } else {
                 self.user = response.result!.user
                 // Does user need confirmation?
-                if (response.result?.userConfirmed != AWSCognitoIdentityUserStatus.Confirmed.rawValue) {
+                if (response.result?.userConfirmed?.intValue != AWSCognitoIdentityUserStatus.confirmed.rawValue) {
                     // User needs confirmation, so we need to proceed to the verify view controller
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "VerifySegue", sender: self)
