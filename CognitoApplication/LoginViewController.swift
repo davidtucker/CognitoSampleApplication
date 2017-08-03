@@ -71,8 +71,10 @@ class LoginViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let forgotPasswordController = segue.destination as! ForgotPasswordViewController
-        forgotPasswordController.emailAddress = self.usernameInput!.text!
+        if segue.identifier == "ForgotPasswordSegue" {
+            let forgotPasswordController = segue.destination as! ForgotPasswordViewController
+            forgotPasswordController.emailAddress = self.usernameInput!.text!
+        }
     }
     
 }
