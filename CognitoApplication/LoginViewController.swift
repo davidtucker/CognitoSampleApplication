@@ -49,12 +49,30 @@ class LoginViewController: UIViewController {
         self.passwordAuthenticationCompletion?.set(result: authDetails)
     }
     
+    @IBAction func forgotPasswordPressed(_ sender: AnyObject) {
+        if (self.usernameInput?.text == nil || self.usernameInput!.text!.isEmpty) {
+            let alertController = UIAlertController(title: "Enter Username",
+                                                    message: "Please enter your username and then select Forgot Password if you want to reset your password.",
+                                                    preferredStyle: .alert)
+            let retryAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(retryAction)
+            self.present(alertController, animated: true, completion:  nil)
+            return
+        }
+        self.performSegue(withIdentifier: "ForgotPasswordSegue", sender: self)
+    }
+    
     func inputDidChange(_ sender:AnyObject) {
         if (self.usernameInput?.text != nil && self.passwordInput?.text != nil) {
             self.loginButton?.isEnabled = true
         } else {
             self.loginButton?.isEnabled = false
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let forgotPasswordController = segue.destination as! ForgotPasswordViewController
+        forgotPasswordController.emailAddress = self.usernameInput!.text!
     }
     
 }
