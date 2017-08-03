@@ -252,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GOg-Gx-dbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="-630.13493253373315"/>
+            <point key="canvasLocation" x="175" y="-1335"/>
         </scene>
         <!--Reset Password-->
         <scene sceneID="7Jj-n4-53l">
@@ -494,7 +494,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SpX-rB-do0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1041" y="-630"/>
+            <point key="canvasLocation" x="1041" y="-572"/>
         </scene>
         <!--Verification View Controller-->
         <scene sceneID="1Oa-xl-NKe">

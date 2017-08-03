@@ -56,7 +56,7 @@ class VerificationViewController: UIViewController {
         self.user?.confirmSignUp(verificationField.text!)
         .continueWith(block: { (response) -> Any? in
             if response.error != nil {
-                self.resetConfirmation(message: response.error!.localizedDescription)
+                self.resetConfirmation(message: (response.error! as NSError).userInfo["message"] as? String)
             } else {
                 DispatchQueue.main.async {
                     // Return to Login View Controller - this should be handled a bit differently, but added in this manner for simplicity

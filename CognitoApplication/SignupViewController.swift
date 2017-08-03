@@ -71,7 +71,7 @@ class SignupViewController : UIViewController {
         .continueWith { (response) -> Any? in
             if response.error != nil {
                 // Error in the Signup Process
-                let alert = UIAlertController(title: "Error", message: response.error?.localizedDescription, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: (response.error! as NSError).userInfo["message"] as? String, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
                 self.present(alert, animated: true, completion: nil)
             } else {
