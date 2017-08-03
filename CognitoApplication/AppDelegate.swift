@@ -113,6 +113,10 @@ extension AppDelegate: AWSCognitoIdentityInteractiveAuthenticationDelegate {
         return self.resetPasswordViewController!
     }
     
+    func startMultiFactorAuthentication() -> AWSCognitoIdentityMultiFactorAuthentication {
+        
+    }
+    
 }
 
 

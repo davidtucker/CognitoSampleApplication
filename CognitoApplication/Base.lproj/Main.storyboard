@@ -361,6 +361,102 @@
             </objects>
             <point key="canvasLocation" x="1916" y="106"/>
         </scene>
+        <!--Multi Factor Authentication Controller-->
+        <scene sceneID="hx1-3a-VFA">
+            <objects>
+                <viewController id="Bf6-Uy-uyw" customClass="MultiFactorAuthenticationController" customModule="CognitoApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sIC-Es-uYx"/>
+                        <viewControllerLayoutGuide type="bottom" id="pRR-OK-uns"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bAo-sX-WLP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VU0-aI-zId">
+                                <rect key="frame" x="36" y="226" width="303" height="215"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the authentication code sent to your phone number:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8A-7g-dF6">
+                                        <rect key="frame" x="0.0" y="8" width="303" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="D0c-I9-hbX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FO4-rS-HEJ">
+                                        <rect key="frame" x="0.0" y="168" width="303" height="30"/>
+                                        <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="iTi-dw-JJd"/>
+                                        </constraints>
+                                        <state key="normal" title="Resend Authentication Code">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resendCodePressed:" destination="Bf6-Uy-uyw" eventType="touchUpInside" id="7Hz-aX-56s"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Authentication Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4WD-0W-dAF">
+                                        <rect key="frame" x="0.0" y="80" width="303" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="hQ7-0E-NI1"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" secureTextEntry="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQ1-cI-oZ8">
+                                        <rect key="frame" x="0.0" y="130" width="303" height="30"/>
+                                        <color key="backgroundColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="at0-hi-SjP"/>
+                                        </constraints>
+                                        <state key="normal" title="Submit Authentication Code">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="submitCodePressed:" destination="Bf6-Uy-uyw" eventType="touchUpInside" id="zx3-Js-3ef"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="FO4-rS-HEJ" firstAttribute="leading" secondItem="VU0-aI-zId" secondAttribute="leading" id="1tx-c6-9bG"/>
+                                    <constraint firstItem="4WD-0W-dAF" firstAttribute="leading" secondItem="VU0-aI-zId" secondAttribute="leading" id="Af0-zA-xHB"/>
+                                    <constraint firstAttribute="trailing" secondItem="cQ1-cI-oZ8" secondAttribute="trailing" id="BC7-lt-f4l"/>
+                                    <constraint firstAttribute="height" constant="215" id="EBI-uo-A07"/>
+                                    <constraint firstItem="cQ1-cI-oZ8" firstAttribute="top" secondItem="4WD-0W-dAF" secondAttribute="bottom" constant="20" id="NUE-5y-0AY"/>
+                                    <constraint firstAttribute="trailing" secondItem="U8A-7g-dF6" secondAttribute="trailing" id="VCX-0Q-KKW"/>
+                                    <constraint firstItem="4WD-0W-dAF" firstAttribute="centerX" secondItem="VU0-aI-zId" secondAttribute="centerX" id="XLC-A8-oFU"/>
+                                    <constraint firstAttribute="trailing" secondItem="FO4-rS-HEJ" secondAttribute="trailing" id="a4T-wm-ymt"/>
+                                    <constraint firstItem="cQ1-cI-oZ8" firstAttribute="leading" secondItem="VU0-aI-zId" secondAttribute="leading" id="dog-WZ-4oD"/>
+                                    <constraint firstItem="U8A-7g-dF6" firstAttribute="leading" secondItem="VU0-aI-zId" secondAttribute="leading" id="e0s-Ke-qmh"/>
+                                    <constraint firstItem="FO4-rS-HEJ" firstAttribute="top" secondItem="cQ1-cI-oZ8" secondAttribute="bottom" constant="8" id="hXk-wX-Gn8"/>
+                                    <constraint firstItem="U8A-7g-dF6" firstAttribute="centerX" secondItem="VU0-aI-zId" secondAttribute="centerX" id="hbQ-Tn-tGF"/>
+                                    <constraint firstItem="4WD-0W-dAF" firstAttribute="top" secondItem="U8A-7g-dF6" secondAttribute="bottom" constant="24" id="ilh-nj-3P2"/>
+                                    <constraint firstAttribute="trailing" secondItem="4WD-0W-dAF" secondAttribute="trailing" id="puD-sY-5UF"/>
+                                    <constraint firstItem="U8A-7g-dF6" firstAttribute="top" secondItem="VU0-aI-zId" secondAttribute="top" constant="8" id="wQu-YV-fAZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VU0-aI-zId" firstAttribute="leading" secondItem="bAo-sX-WLP" secondAttribute="leadingMargin" constant="20" id="LJe-mg-1oW"/>
+                            <constraint firstItem="VU0-aI-zId" firstAttribute="centerX" secondItem="bAo-sX-WLP" secondAttribute="centerX" id="iqQ-Nz-DPh"/>
+                            <constraint firstItem="VU0-aI-zId" firstAttribute="centerY" secondItem="bAo-sX-WLP" secondAttribute="centerY" id="kLf-ed-mMA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VU0-aI-zId" secondAttribute="trailing" constant="20" id="nSx-aF-B9B"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="authenticationCode" destination="4WD-0W-dAF" id="jIG-68-Jg0"/>
+                        <outlet property="submitCodeButton" destination="cQ1-cI-oZ8" id="zAa-Rp-YNt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JKy-0Y-0iN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2809" y="-630"/>
+        </scene>
         <!--Signup View Controller-->
         <scene sceneID="tJf-hf-aFR">
             <objects>
