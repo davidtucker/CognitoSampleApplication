@@ -35,6 +35,7 @@ class SignupViewController : UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     
     var user: AWSCognitoIdentityUser?
+    var codeDeliveryDetails:AWSCognitoIdentityProviderCodeDeliveryDetailsType?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -80,6 +81,7 @@ class SignupViewController : UIViewController {
                 if (response.result?.userConfirmed?.intValue != AWSCognitoIdentityUserStatus.confirmed.rawValue) {
                     // User needs confirmation, so we need to proceed to the verify view controller
                     DispatchQueue.main.async {
+                        self.codeDeliveryDetails = response.result?.codeDeliveryDetails
                         self.performSegue(withIdentifier: "VerifySegue", sender: self)
                     }
                 } else {
@@ -95,6 +97,7 @@ class SignupViewController : UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let verificationController = segue.destination as! VerificationViewController
+        verificationController.codeDeliveryDetails = self.codeDeliveryDetails
         verificationController.user = self.user!
     }
     

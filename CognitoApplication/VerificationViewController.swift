@@ -28,6 +28,9 @@ class VerificationViewController: UIViewController {
     
     @IBOutlet weak var verificationField: UITextField!
     @IBOutlet weak var verifyButton: UIButton!
+    @IBOutlet weak var verificationLabel: UILabel!
+    
+    var codeDeliveryDetails:AWSCognitoIdentityProviderCodeDeliveryDetailsType?
     
     var user: AWSCognitoIdentityUser?
     
@@ -35,6 +38,15 @@ class VerificationViewController: UIViewController {
         super.viewWillAppear(animated)
         self.verifyButton.isEnabled = false
         self.verificationField.addTarget(self, action: #selector(inputDidChange(_:)), for: .editingChanged)
+        populateCodeDeliveryDetails()
+    }
+    
+    func populateCodeDeliveryDetails() {
+        let isEmail = (codeDeliveryDetails?.deliveryMedium == AWSCognitoIdentityProviderDeliveryMediumType.email)
+        verifyButton.setTitle(isEmail ? "Verify Email Address" : "Verify Phone Number", for: .normal)
+        let medium = isEmail ? "your email address" : "your phone number"
+        let destination = codeDeliveryDetails!.destination!
+        verificationLabel.text = "Please enter the code that was sent to \(medium) at \(destination)"
     }
     
     func inputDidChange(_ sender:AnyObject) {
