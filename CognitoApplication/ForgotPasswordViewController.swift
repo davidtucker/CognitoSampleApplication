@@ -76,7 +76,9 @@ class ForgotPasswordViewController: UIViewController {
                         self.presentingViewController?.dismiss(animated: true, completion: nil)
                     }
                 }))
-                self.present(alert, animated: true, completion: nil)                                                                                                                                                                                                                       
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                }
             } else {
                 // Password reset.  Send the user back to the login and let them know they can login with new password.
                 DispatchQueue.main.async {

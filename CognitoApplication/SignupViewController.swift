@@ -33,6 +33,7 @@ class SignupViewController : UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var phoneNumber: UITextField!
     
     var user: AWSCognitoIdentityUser?
     var codeDeliveryDetails:AWSCognitoIdentityProviderCodeDeliveryDetailsType?
@@ -45,6 +46,7 @@ class SignupViewController : UIViewController {
         self.email.addTarget(self, action: #selector(inputDidChange(_:)), for: .editingChanged)
         self.password.addTarget(self, action: #selector(inputDidChange(_:)), for: .editingChanged)
         self.confirmPassword.addTarget(self, action: #selector(inputDidChange(_:)), for: .editingChanged)
+        self.phoneNumber.addTarget(self, action: #selector(inputDidChange(_:)), for: .editingChanged)
     }
     
     func inputDidChange(_ sender:AnyObject) {
@@ -60,6 +62,10 @@ class SignupViewController : UIViewController {
             self.submitButton.isEnabled = false
             return
         }
+        if phoneNumber.text == nil || phoneNumber.text!.isEmpty == true {
+            self.submitButton.isEnabled = false
+            return
+        }
         self.submitButton.isEnabled = (password.text == confirmPassword.text)
     }
     
@@ -68,7 +74,9 @@ class SignupViewController : UIViewController {
         let emailAttribute = AWSCognitoIdentityUserAttributeType(name: "email", value: email.text!)
         let firstNameAttribute = AWSCognitoIdentityUserAttributeType(name: "given_name", value: firstName.text!)
         let lastNameAttribute = AWSCognitoIdentityUserAttributeType(name: "family_name", value: lastName.text!)
-        userPool.signUp(UUID().uuidString, password: password.text!, userAttributes: [emailAttribute, firstNameAttribute, lastNameAttribute], validationData: nil)
+        let phoneNumberAttribute = AWSCognitoIdentityUserAttributeType(name: "phone_number", value: phoneNumber.text!)
+        let attributes:[AWSCognitoIdentityUserAttributeType] = [emailAttribute, firstNameAttribute, lastNameAttribute, phoneNumberAttribute]
+        userPool.signUp(email.text!, password: password.text!, userAttributes: attributes, validationData: nil)
         .continueWith { (response) -> Any? in
             if response.error != nil {
                 // Error in the Signup Process

@@ -31,9 +31,12 @@ class AppViewController: UITableViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var mfaSwitch: UISwitch!
     
     var user:AWSCognitoIdentityUser?
     var userAttributes:[AWSCognitoIdentityProviderAttributeType]?
+    var mfaSettings:[AWSCognitoIdentityProviderMFAOptionType]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +56,7 @@ class AppViewController: UITableViewController {
                 return nil
             }
             self.userAttributes = task.result?.userAttributes
+            self.mfaSettings = task.result?.mfaOptions
             self.userAttributes?.forEach({ (attribute) in
                 print("Name: " + attribute.name!)
             })
@@ -64,15 +68,62 @@ class AppViewController: UITableViewController {
     }
     
     func resetAttributeValues() {
-        self.lastNameLabel.text = ""
-        self.firstNameLabel.text = ""
-        self.usernameLabel.text = ""
+        DispatchQueue.main.async {
+            self.lastNameLabel.text = ""
+            self.firstNameLabel.text = ""
+            self.usernameLabel.text = ""
+            self.phoneNumberLabel.text = ""
+            self.mfaSwitch.setOn(false, animated: false)
+        }
+    }
+    
+    @IBAction func handleSwitch(_ sender: AnyObject) {
+        let settings = AWSCognitoIdentityUserSettings()
+        if mfaSwitch.isOn {
+            // Enable MFA
+            let mfaOptions = AWSCognitoIdentityUserMFAOption()
+            mfaOptions.attributeName = "phone_number"
+            mfaOptions.deliveryMedium = .sms
+            settings.mfaOptions = [mfaOptions]
+        } else {
+            // Disable MFA
+            settings.mfaOptions = []
+        }
+        user?.setUserSettings(settings)
+        .continueOnSuccessWith(block: { (response) -> Any? in
+            if response.error != nil {
+                let alert = UIAlertController(title: "Error", message: (response.error! as NSError).userInfo["message"] as? String, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion:nil)
+                self.resetAttributeValues()
+            } else {
+                self.fetchUserAttributes()
+            }
+            return nil
+        })
+        
+    }
+    
+    func isEmailMFAEnabled() -> Bool {
+        let values = self.mfaSettings?.filter { $0.deliveryMedium == AWSCognitoIdentityProviderDeliveryMediumType.sms }
+        if values?.first != nil {
+            return true
+        }
+        return false
     }
     
     func setAttributeValues() {
-        self.lastNameLabel.text = valueForAttribute(name: "family_name")
-        self.firstNameLabel.text = valueForAttribute(name: "given_name")
-        self.usernameLabel.text = valueForAttribute(name: "email")
+        DispatchQueue.main.async {
+            self.lastNameLabel.text = self.valueForAttribute(name: "family_name")
+            self.firstNameLabel.text = self.valueForAttribute(name: "given_name")
+            self.usernameLabel.text = self.valueForAttribute(name: "email")
+            self.phoneNumberLabel.text = self.valueForAttribute(name: "phone_number")
+            if self.mfaSettings == nil {
+                self.mfaSwitch.setOn(false, animated: false)
+            } else {
+                self.mfaSwitch.setOn(self.isEmailMFAEnabled(), animated: false)
+            }
+        }
     }
     
     func valueForAttribute(name:String) -> String? {

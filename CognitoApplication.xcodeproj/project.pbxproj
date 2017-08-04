@@ -19,6 +19,7 @@
 		6398A6721EC1548D009C2D77 /* CognitoConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6398A6711EC1548D009C2D77 /* CognitoConfig.swift */; };
 		63A8F7D51F30E79B00AD21E0 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F7D41F30E79B00AD21E0 /* SignupViewController.swift */; };
 		63A8F7D71F30FAC800AD21E0 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A8F7D61F30FAC800AD21E0 /* VerificationViewController.swift */; };
+		63B5E4F31F33EBC300B9D1A3 /* MultiFactorAuthenticationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B5E4F21F33EBC300B9D1A3 /* MultiFactorAuthenticationController.swift */; };
 		6E3BB744AD21E1DD722F496E /* Pods_CognitoApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50439609D2FD5FDF1A0EA3E5 /* Pods_CognitoApplication.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		6398A6711EC1548D009C2D77 /* CognitoConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CognitoConfig.swift; sourceTree = "<group>"; };
 		63A8F7D41F30E79B00AD21E0 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		63A8F7D61F30FAC800AD21E0 /* VerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
+		63B5E4F21F33EBC300B9D1A3 /* MultiFactorAuthenticationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiFactorAuthenticationController.swift; sourceTree = "<group>"; };
 		88B9FE351F2439551342AEC4 /* Pods-CognitoApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CognitoApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-CognitoApplication/Pods-CognitoApplication.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 		632D25331EB95CAB005A4E31 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				63B5E4F21F33EBC300B9D1A3 /* MultiFactorAuthenticationController.swift */,
 				632D25341EB95CBD005A4E31 /* LoginViewController.swift */,
 				632D25361EB95CCE005A4E31 /* ResetPasswordViewController.swift */,
 				632D25381EB95CDE005A4E31 /* AppViewController.swift */,
@@ -258,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63B5E4F31F33EBC300B9D1A3 /* MultiFactorAuthenticationController.swift in Sources */,
 				6373365E1F3252B700EA5BCE /* ForgotPasswordViewController.swift in Sources */,
 				63A8F7D51F30E79B00AD21E0 /* SignupViewController.swift in Sources */,
 				632D25371EB95CCE005A4E31 /* ResetPasswordViewController.swift in Sources */,

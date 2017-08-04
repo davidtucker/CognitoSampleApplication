@@ -41,6 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var resetPasswordViewController: ResetPasswordViewController?
     
+    var multiFactorAuthenticationController: MultiFactorAuthenticationController?
+    
     var navigationController: UINavigationController?
     
     var cognitoConfig:CognitoConfig?
@@ -114,7 +116,17 @@ extension AppDelegate: AWSCognitoIdentityInteractiveAuthenticationDelegate {
     }
     
     func startMultiFactorAuthentication() -> AWSCognitoIdentityMultiFactorAuthentication {
+        if (self.multiFactorAuthenticationController == nil) {
+            self.multiFactorAuthenticationController = self.storyboard?.instantiateViewController(withIdentifier: "MultiFactorAuthenticationController") as? MultiFactorAuthenticationController
+        }
         
+        DispatchQueue.main.async {
+            if(self.multiFactorAuthenticationController!.isViewLoaded || self.multiFactorAuthenticationController!.view.window == nil) {
+                self.navigationController?.present(self.multiFactorAuthenticationController!, animated: true, completion: nil)
+            }
+        }
+        
+        return self.multiFactorAuthenticationController!
     }
     
 }
